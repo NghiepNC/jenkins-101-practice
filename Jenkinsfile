@@ -1,9 +1,14 @@
 pipeline {
-    agent { 
-        node {
-            label 'docker-agent-python'
-            }
-      }
+//     agent { 
+//         node {
+//             label 'docker-agent-python'
+//             }
+//       }
+    agent any
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
+    }
     triggers {
         pollSCM '* * * * *'
     }
